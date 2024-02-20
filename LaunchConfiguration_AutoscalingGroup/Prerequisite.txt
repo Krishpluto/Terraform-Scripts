@@ -1,0 +1,50 @@
+Region used: ap-south-1
+
+Pre-requisite-1 : (run the VPC_IGW scripts 1st)
+    1. AWS VPC
+    2. IGW
+    3. Associate the VPC created with IGW
+
+-> Cross check after the above are created:
+    1. Check "CustomVPC" created under VPC
+        -> inside VPC check the "Main route table is "associate_vpc""
+    2. Check "IGW" is created inside internet gateway
+        -> inside IGW check "CustomVPC" is associated with it.
+
+Pre-requisite-2: (run the public-subnet scripts 2nd)
+    1. 2 Public Subnets (ap-south-1a , ap-south-1b)
+    2. Create AWS Route Table for Public Subnets & Associate them
+
+-> Cross check after the above are created:
+    1. Go to VPC console -> click Subnets -> "PublicSubnet1" & "PublicSubnet2" are created
+    2. open the any one subnet it (PublicSubnet1) -> "PublicRouteTable" is associated
+    3. Go to Route tables -> click "PublicRouteTable" -> igw is associated along with local
+                             go under "Subnet association" -> Both PublicSubnet1 & PublicSubnet2 associated
+
+
+############### To Be Created #############
+aws security grp for asg
+target grp for asg
+auto scaling
+launch configuration
+
+-> terraform init
+-> terraform fmt
+-> terraform plan
+-> terraform apply -auto-approve
+
+before: 
+no ec2 instance
+
+after:
+2 ec2 instances created
+security gro is created "terraform-asg-security-group"
+taget group is created "ASGTG"
+autoscaling group is created "webtier_dev234567"
+    -> click the "webtier_dev234567" in new tab
+in launch configuration -> is created "webtier_dev234567" 
+    -> under it click "view user data" ..you will see the scripts
+
+go to the autoscaling group -> it will show desired capasity, min max capacity
+    -> under the activity it shows 2 instances created
+    -> under instance management it shows 2 instance created in 2 diff availability zones.
