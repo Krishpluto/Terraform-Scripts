@@ -48,3 +48,12 @@ in launch configuration -> is created "webtier_dev234567"
 go to the autoscaling group -> it will show desired capasity, min max capacity
     -> under the activity it shows 2 instances created
     -> under instance management it shows 2 instance created in 2 diff availability zones.
+
+
+############ ERROR FACED #######
+ Error: waiting for Auto Scaling Group (terraform-20240220094420063300000002) capacity satisfied: scaling activity (5da63717-9bdb-ee9a-c8f4-6165bdef71de): Failed: Access denied when attempting to assume role arn:aws:iam::150187756870:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling. Validating load balancer configuration failed.
+│ scaling activity (8f463717-9bda-64ef-9368-b567b6b49fa7): Failed: Access denied when attempting to assume role arn:aws:iam::150187756870:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling. Validating load balancer configuration failed.
+│ 
+│   with aws_autoscaling_group.autoscaling_group_dev,
+│   on main.tf line 79, in resource "aws_autoscaling_group" "autoscaling_group_dev":
+│   79: resource "aws_autoscaling_group" "autoscaling_group_dev" {
